@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Layout</title>
+
+     <!-------- CSS STYLE LINK -------->
+     <link rel="stylesheet" href="style.css">
+     <!--x----- CSS STYLE LINK -----x-->
+ 
+     <!-------- FONT-AWESOME LINK -------->
+     <link rel="stylesheet" href="./fontawesome-free-5.15.1-web/css/all.min.css">
+     <!--x----- FONT-AWESOME LINK -----x-->
+
+   
+    
+</head>
+<body>
+  <!-- <button onclick="readAllClient()">Read All Client</button> -->
+  <p id="notifications"></p>
+  <!-------- CONTAINER SECTION -------->
+    <div class="container">
+ <!-------- WRAPPER SECTION -------->
+        <div class="wrapper">
+          <!-------- CONTACT COLUMN -------->
+          <div class="contacts">
+            <img src="./assets/images/EZLogo.png" alt="EZEKTEC LOGO" title="EZEKTEC LOGO">
+            <h3>CLIENT INTAKE FORM</h3>      
+            <ul>
+              <li><b>*Note:</b> We'll not re-sell or use your contact information for anything else other than working on your project.</li>             
+            </ul>
+          </div>
+          <!-------- CONTACT COLUMN -------->
+      <!-------- FORM COLUMN  -------->
+          <div class="form">            
+            <div class="form__item">               
+              <p class="input-width">
+                <label for="full__name">FULL NAME
+                    <span class="asterik">*</span>
+                    <span>
+                        <i class="fas fa-question-circle" title="please enter the country for the full names of the party responsible for representing the company on this project."></i>
+                    </span>
+                    </label>
+                    <input type="text" onfocus="focusfullname()" id="fullName" required placeholder="Full Name" title="please enter the country for the full names of the party responsible for representing the company on this project.">
+                    <br>
+                    <span id="error" ></span>
+                  </p>
+                 
+              <p class="input-width">
+                <label for="companyname"> COMPANY NAME <span>
+                    <i class="fas fa-question-circle" title="please enter the name of your company or entity that will be responsible for paying for your project work."></i>
+                    </span>
+                    </label>
+                    <input type="text" id="companyName" placeholder="Company Name" title="please enter the name of your company or entity that will be responsible for paying for your project work.">
+                    
+            </p>
+            <p class="input-width">
+                <label for="website"> WEBSITE 
+                    <span>
+                        <i class="fas fa-question-circle" title="please enter your website url here. If you don't have a website, please leave this field empty."></i>
+                    </span>
+                    </label>
+                    <input type="text" id="website" placeholder="Website" title="please enter your website url here. If you don't have a website, please leave this field empty.">
+                    
+              </p>  
+              <p class="input-width">
+                <label for="address"> ADDRESS 
+                    <span>
+                        <i class="fas fa-question-circle" title="please enter your contact address or that of the responsible party responsible for your project."></i>
+                    </span>
+                    </label>
+                    <input type="text" id="address" placeholder="Address" title="please enter your contact address or that of the responsible party responsible for your project.">
+                   
+              </p>
+              <p class="input-width">
+                <label for="country"> COUNTRY 
+                <span>
+                    <i class="fas fa-question-circle" title="please enter the country for the state and postal code supplied above."></i>
+                </span>
+                </label>
+                <input type="text" id="country" placeholder="Country" title="please enter the country for the state and postal code supplied above.">
+                </p>
+             
+              <p class="input-width">
+                <label for="state"> STATE 
+                    <span>
+                        <i class="fas fa-question-circle" title="please enter the state where the company or responsible party for this project resides in."></i>
+                    </span>
+                    </label>
+                    <input type="text" id="state" placeholder="State" title="please enter the state where the company or responsible party for this project resides in.">
+                   
+             </p>
+             <p class="input-width">
+                <label for="city"> CITY 
+                    <span>
+                        <i class="fas fa-question-circle" title="please enter the name of the city where the company or the responsible party for this project resides."></i>
+                    </span>
+                    </label>
+                    <input type="text" id="city" placeholder="City" title="please enter the name of the city where the company or the responsible party for this project resides.">
+                   
+              </p>                           
+             <p class="input-width">
+                <label for="postalcode"> POSTAL CODE 
+                    <span>
+                        <i class="fas fa-question-circle" title="please enter the postal code for the address supplied."></i>
+                    </span>
+                    </label>
+                    <input type="text" id="postalCode" placeholder="Postal Code" title="please enter the postal code for the address supplied.">                   
+             </p>                              
+             <p class="full-width">
+                <button id="btnsubmit" onclick="addClient()">SUBMIT</button>
+              </p>
+            </div>
+          </div>
+      <!--x----- FORM COLUMN -----x-->
+        </div>
+        <span id="response"></span>
+      <!--x----- WRAPPER SECTION -----x-->
+      </div>
+  <!--x----- CONTAINER SECTION -----x-->
+   <!-------- SQLITE CONNECTION USING INDEXED DB -------->
+ <script>
+
+ function focusfullname(){
+  var focusfullname = document.getElementById('fullName');
+      focusfullname.onfocus = alert('First Name and Last Name are required');
+ }
+
+  function fullnameError(){
+    var error = document.getElementById('error');
+    
+    var fullnameError = document.getElementById('fullName').value;
+    if(fullnameError === ""){
+      error.textContent = "Full Name must not be empty";
+      error.style.color = "red";
+    }
+    else{
+      error.textContent = "";
+    }
+  }
+  
+  function addClient(){
+    fullnameError();
+    var fullname = document.getElementById('fullName').value;
+    var companyname = document.getElementById('companyName').value;
+    var website = document.getElementById('website').value;
+    var address = document.getElementById('address').value;
+    var country = document.getElementById('country').value;
+    var state = document.getElementById('state').value;
+    var city = document.getElementById('city').value;
+    var postalcode = document.getElementById('postalCode').value;
+
+    if(fullname === ""){
+    alert("Full name must not be empty");
+  }
+
+  if(fullname.length <= 1){
+    alert("Full name must have more than one input");
+    return;
+  }
+
+   
+   var httpr = new XMLHttpRequest();
+   httpr.open("POST","get_data.php", true);
+  httpr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  httpr.onreadystatechange = function(){
+    if(httpr.readyState == 4 && httpr.status == 200){
+      document.getElementById("response").innerHTML = httpr.responseText;
+    }
+  }
+  httpr.send("fullname="+fullname+ "&companyname="+companyname+ "&website="+ website+"&address="+ address + "&city=" +city+ "&country=" +country+ "&state=" +state+ "&postalcode=" + postalcode);
+   }
+  
+    </script>
+  <!--x----- SQLITE CONNECTION USING INDEXED DB -----x-->
+</body>
+</html>
