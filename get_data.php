@@ -52,7 +52,7 @@ if(isset($_POST['fullname'])){
 $sql2="SELECT * FROM clientintakeform";
 $result2 = mysqli_query($conx,$sql2);
 
-echo "<table> <tr>
+echo "<div style='overflow-x: auto;'>   <table> <tr>
 <th>Id</th>
 <th>FullName</th>
 <th>CompanyName</th>
@@ -76,7 +76,6 @@ while($row = mysqli_fetch_array($result2)) {
   echo "<td>" . $row['postalCode'] . "</td>";
   echo "</tr>";
 }
-echo "</table>";
-
+echo "</table> </div>";
 }
 ?>
