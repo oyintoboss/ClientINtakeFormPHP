@@ -204,6 +204,9 @@ if(website.toString().includes('http://',0) || website.toString().includes('http
   //alert("Enter a valid website url");
   return;
 }
+else{
+  websiteError.textContent = "";
+    }
 //--x----- CHECK THE WEBSITE URL WHEN SUBMIT BUTTON IS CLICKED -----x--
 
 //-------- CHECK THE POSTAL CODE WHEN SUBMIT BUTTON IS CLICKED --------
@@ -215,6 +218,9 @@ if(postalcode.length > 6){
     //alert("Postal Code requires 6 digits only");
     return;
   }
+  else{
+    postalCodeError.textContent = "";
+    }
   //--x----- CHECK THE POSTAL CODE WHEN SUBMIT BUTTON IS CLICKED -----x--
 
 //-------- CHANGE THE SUBMIT BUTTON TEXT WHEN CLICKED --------
